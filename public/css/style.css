@@ -625,3 +625,10 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
  #details .grid-cols-12{display:flex;flex-direction:column;gap:16px}
  #details .grid-cols-12>img{width:100%;height:auto!important;max-height:none!important;object-fit:contain!important}
 }
+
+/* آراء الزبناء: فالهاتف كل سكرين فسطر بوحدو (بلا سلايدر)، بمقاسو الطبيعي */
+@media(max-width:767px){
+ .reviews-track{display:flex;flex-direction:column;align-items:center;gap:20px;overflow:visible;scroll-snap-type:none;padding:0 0 8px}
+ .review{flex:none;width:100%;max-width:420px;scroll-snap-align:none}
+ .review img{width:100%;height:auto}
+}
