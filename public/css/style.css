@@ -1,5 +1,5 @@
 /* FATHIUM - custom styles (loaded after css/tailwind.css) */
-:root{--brand:#DDBE6F;--deep:#2A5A3A;--surface:#224D31;--green:#208855;--ink:#EAF1EC;--mute:#B9CBC0;--line:#4A7F5E;--gold:#B89A55;--leaf:#58B368}
+:root{--brand:#DDBE6F;--deep:#2A5A3A;--surface:#224D31;--green:#093F30;--ink:#EAF1EC;--mute:#B9CBC0;--line:#4A7F5E;--gold:#B89A55;--leaf:#58B368}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Droid Arabic Kufi','Noto Kufi Arabic',Tahoma,sans-serif;color:var(--ink);background:#fff;line-height:1.85;overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -208,9 +208,9 @@ details[open] summary{color:var(--brand)}
 @media(max-width:1023px){.hero-note{order:1}}
 
 /* ===== Order design from client's reference + outlined buttons ===== */
-:root{--btn:#208855}
+:root{--btn:#093F30}
 .btn{background:var(--btn);color:#fff;border:0;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-.btn:hover{background:#1B7548}
+.btn:hover{background:#06352A}
 .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:0}
 .btn-ghost:hover{background:var(--btn);color:#fff}
 .btn-lg{min-height:66px;font-size:1.1rem;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
@@ -219,9 +219,9 @@ details[open] summary{color:var(--brand)}
 .rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--gold)}
 .pick{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border-radius:24px;padding:30px 12px 24px;min-height:230px;cursor:pointer}
 .pick input{position:absolute;opacity:0;pointer-events:none}
-.pick.single{background:#fff;color:var(--deep);border:2px solid #176B45;box-shadow:0 0 0 5px #fff}
+.pick.single{background:#fff;color:var(--deep);border:2px solid #093F30;box-shadow:0 0 0 5px #fff}
 .pick.bundle{background:#D4B467;color:var(--surface);border:2px solid #9C7E2E;box-shadow:0 0 0 4px var(--gold)}
-.pick-leaf{width:44px;height:44px;color:#176B45}
+.pick-leaf{width:44px;height:44px;color:#093F30}
 .pick-title{font-size:1.15rem;font-weight:700;line-height:1.4}
 .pick-title .latin{letter-spacing:.04em}
 .pick-price{font-size:clamp(2rem,9vw,2.9rem);line-height:1.1;font-weight:700}
@@ -276,7 +276,7 @@ details[open] summary{color:var(--brand)}
 @media(max-width:380px){.trust-box{grid-template-columns:1fr}}
 
 /* ===== Light theme (white page, green accents, from client's reference) ===== */
-:root{--g:#1F6B45;--gd:#245A38;--mint:#fff;--ink2:#1b2a20;--soft:#4a5d50;--ln:#d3e3d8}
+:root{--g:#093F30;--gd:#062E24;--mint:#fff;--ink2:#1b2a20;--soft:#4a5d50;--ln:#d3e3d8}
 html{color-scheme:light}
 body{background:#fff!important;color:var(--ink2)!important}
 .bg-deep{background:#fff!important}
@@ -291,11 +291,11 @@ header.sticky{background:#fff!important;border-bottom:1px solid var(--ln)!import
 #bar{background:#fff!important;border-top:1px solid var(--ln)!important;box-shadow:0 -4px 16px rgba(0,0,0,.06)}
 #bar .text-white{color:var(--ink2)!important}
 /* buttons: green, no gold border */
-.btn{background:var(--g)!important;color:#fff!important;border:0!important;box-shadow:0 6px 16px rgba(31,107,69,.28)}
-.btn:hover{background:#185a39!important}
+.btn{background:var(--g)!important;color:#fff!important;border:0!important;box-shadow:0 6px 16px rgba(9,63,48,.28)}
+.btn:hover{background:#06352A!important}
 .btn-ghost{background:#fff!important;color:var(--g)!important;border:0!important;box-shadow:0 4px 14px rgba(0,0,0,.1)}
 .btn-ghost:hover{background:var(--mint)!important;color:var(--g)!important}
-.btn-lg{box-shadow:0 8px 20px rgba(31,107,69,.3)!important}
+.btn-lg{box-shadow:0 8px 20px rgba(9,63,48,.3)!important}
 .btn-lg .ico,.btn .ico{color:#fff}
 /* hero (like the reference image) */
 .hero-section{background:#fff!important;color:var(--ink2)}
@@ -320,7 +320,7 @@ header.sticky{background:#fff!important;border-bottom:1px solid var(--ln)!import
 .lf{color:#cfe8d6!important}
 .sec-title{color:var(--gd)!important}
 .leaf-div{color:var(--g)!important}.leaf-div span{background:var(--ln)!important}
-.panel{background:#fff!important;color:var(--ink2)!important;border:0!important;box-shadow:0 8px 28px rgba(31,107,69,.12)}
+.panel{background:#fff!important;color:var(--ink2)!important;border:0!important;box-shadow:0 8px 28px rgba(9,63,48,.12)}
 .panel .panel-h,.panel h3{color:var(--gd)!important}
 .img-frame{border:0!important;box-shadow:0 8px 24px rgba(0,0,0,.1)}
 .reasons li{color:var(--ink2)!important}
@@ -335,7 +335,7 @@ details[open] summary{color:var(--g)!important}
 .how>li p:first-of-type{color:var(--ink2)!important}
 /* order */
 #order{background:var(--mint)!important}
-.order-card{background:#fff;border-radius:28px;padding:clamp(18px,4vw,36px);box-shadow:0 10px 30px rgba(31,107,69,.12)}
+.order-card{background:#fff;border-radius:28px;padding:clamp(18px,4vw,36px);box-shadow:0 10px 30px rgba(9,63,48,.12)}
 .pick.single{background:#fff!important;color:var(--gd)!important;border:2px solid var(--ln)!important;box-shadow:none!important}
 .pick.bundle{background:var(--g)!important;color:#fff!important;border:2px solid var(--g)!important;box-shadow:none!important}
 .pick.bundle .pick-leaf,.pick.bundle *{color:inherit}
@@ -466,7 +466,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .js .rv.rv-r{transform:translateX(36px)}
 .js .rv.in{opacity:1;transform:none}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,107,69,.45)}70%{box-shadow:0 0 0 14px rgba(31,107,69,0)}100%{box-shadow:0 0 0 0 rgba(31,107,69,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(9,63,48,.45)}70%{box-shadow:0 0 0 14px rgba(9,63,48,0)}100%{box-shadow:0 0 0 0 rgba(9,63,48,0)}}
 @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
 .js .hero-img{animation:floaty 5s ease-in-out 1.2s infinite}
 .js .hero-cta-btn{animation:pulse 2.2s ease-out 1.5s infinite}
@@ -542,7 +542,7 @@ a,button,label.pick{-webkit-tap-highlight-color:transparent}
 
 /* حقول الفورم: حالات واضحة (focus / خطأ) */
 .pill{transition:box-shadow .2s,background .2s}
-.pill:focus-within{background:#fff!important;box-shadow:0 0 0 2px var(--g),0 4px 14px rgba(31,107,69,.15)!important}
+.pill:focus-within{background:#fff!important;box-shadow:0 0 0 2px var(--g),0 4px 14px rgba(9,63,48,.15)!important}
 .pill.invalid{background:#fff5f4!important;box-shadow:0 0 0 2px #d9534f!important}
 .pill.invalid .ico{color:#b3261e!important}
 .err{min-height:0;font-size:.85rem;line-height:1.5}
