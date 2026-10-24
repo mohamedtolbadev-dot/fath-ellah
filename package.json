@@ -1,0 +1,13 @@
+{
+  "name": "fathium-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FATHIUM Herbal Protein - Darija RTL COD landing page",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i src/input.css -o css/tailwind.css --minify",
+    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
