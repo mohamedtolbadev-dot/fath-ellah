@@ -125,7 +125,6 @@ details[open] .pm{transform:rotate(45deg)}
 details[open] summary{color:var(--brand)}
 details p{padding-bottom:1.25rem}
 
-footer{border-top:3px solid var(--gold)}
 
 /* Motion: one hero sequence, one checklist cascade, user-triggered feedback */
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -360,10 +359,6 @@ details[open] summary{color:var(--g)!important}
 .trust-box .ico,.trust .ico,.pay .ico{color:var(--g)!important}
 #ok{background:var(--mint)!important;border-color:var(--g)!important;color:var(--ink2)}
 /* final CTA + footer (green like reference) */
-footer{background:var(--gd)!important;border-top:0!important}
-footer *{color:rgba(255,255,255,.85)!important}
-footer .latin,footer .text-white,footer p.text-white,footer a:hover{color:#fff!important}
-footer .border-t{border-color:rgba(255,255,255,.25)!important}
 .wa{background:var(--g)!important;border:0!important;color:#fff!important}
 .wa .ico{color:#fff}
 .hero-section .hero-cta-btn .ico{color:#fff}
@@ -383,7 +378,6 @@ footer .border-t{border-color:rgba(255,255,255,.25)!important}
 .leaf-div{color:var(--au)!important}.leaf-div span{background:var(--au2)!important}
 .rule{color:var(--gd)!important}.rule::before,.rule::after{background:var(--au2)!important}
 header.sticky{border-bottom:1px solid var(--au2)!important}
-footer{border-top:3px solid var(--au)!important}
 .band3{border-top:1px solid var(--au2)!important;border-bottom:1px solid var(--au2)!important}
 .band3>div>div{border-inline-start-color:var(--au2)!important}
 .sub-pill{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--au)}
@@ -446,7 +440,6 @@ html,body{max-width:100%;overflow-x:hidden}
  #details .grid-cols-12 img{max-height:340px}
  .sec-title{font-size:1.5rem}
  details summary{min-height:56px;font-size:.95rem}
- footer .py-14{padding-top:2rem!important;padding-bottom:5rem!important}
  .wa{width:52px;height:52px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}
  section:last-of-type .btn,section:last-of-type .btn-ghost{width:100%}
 }
@@ -534,3 +527,88 @@ main>section:first-of-type::before{background-position:calc(100% + 70px) 90px}
 #how::before{background-position:calc(100% + 70px) 25%}
 main>section:last-of-type::before{background-position:50% 50%}
 @media(max-width:767px){main>section::before{background-size:min(300px,78vw)}}
+
+/* ===== UX polish (v2) ===== */
+/* زر واتساب: يبقى مخفي حتى يتعمر الرقم (display:grid!important كان كيغلب hidden) */
+.wa[hidden]{display:none!important}
+
+/* ما نبقاوش نعتمدو على hover فالموبايل */
+@media(hover:none){
+ .js .pick:hover,.js .img-frame:hover img{transform:none}
+}
+.js .pick{transition:transform .25s,outline-color .2s}
+.pick:active{transform:scale(.98)}
+a,button,label.pick{-webkit-tap-highlight-color:transparent}
+
+/* حقول الفورم: حالات واضحة (focus / خطأ) */
+.pill{transition:box-shadow .2s,background .2s}
+.pill:focus-within{background:#fff!important;box-shadow:0 0 0 2px var(--g),0 4px 14px rgba(31,107,69,.15)!important}
+.pill.invalid{background:#fff5f4!important;box-shadow:0 0 0 2px #d9534f!important}
+.pill.invalid .ico{color:#b3261e!important}
+.err{min-height:0;font-size:.85rem;line-height:1.5}
+.err:not(:empty){padding-top:6px}
+.err:not(:empty)::before{content:"⚠ ";font-size:.85em}
+
+/* أزرار الكمية: مساحة لمس مناسبة + حالة disabled */
+.qty-btn{min-width:44px;min-height:44px;display:grid;place-items:center;line-height:1}
+.qty-btn:disabled{opacity:.35;cursor:not-allowed}
+.qty-btn:not(:disabled):active{background:var(--mint)!important}
+#ql{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+
+/* زر الإرسال */
+.btn-lg{text-align:center;line-height:1.4;padding-block:10px}
+.btn:focus-visible,.btn-ghost:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px var(--g)}
+
+/* مجموع الطلب أوضح */
+.total-line{display:flex;align-items:baseline;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 12px;border-radius:18px;background:#f5f5f5}
+
+/* رسالة التأكيد */
+#ok{line-height:1.8}
+
+/* بعد حذف الفوتر: آخر قسم كيشد الصفحة مزيان */
+main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
+@media(min-width:768px){main>section:last-of-type .flex{gap:1rem}}
+
+/* الشريط السفلي فالموبايل */
+#bar{box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+#bar .btn{min-height:48px}
+
+/* شاشات كبيرة: عرض مريح للقراءة */
+@media(min-width:1024px){
+ .order-card{padding:40px}
+ .hero-img{max-height:480px}
+}
+
+/* شاشات صغيرة بزاف (320px) */
+@media(max-width:360px){
+ .pick-price{font-size:1.8rem}
+ .pick-title{font-size:.92rem}
+ .pick-note{font-size:.68rem}
+ .pill{padding:0 12px;gap:8px}
+ .qty-btn{min-width:40px;min-height:40px}
+ .pill .qty-btn{width:40px;height:40px}
+ #bar{gap:8px;padding-inline:10px}
+ #b-price{font-size:1rem}
+ .total-line{font-size:1rem}
+}
+
+/* لاندسكيب فالموبايل: بلا ارتفاعات كبيرة */
+@media(max-height:480px) and (orientation:landscape){
+ .hero-img{max-height:220px}
+ .wa{bottom:72px!important}
+}
+
+/* ===== Reviews (WhatsApp screenshots) ===== */
+.reviews-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.review{flex:0 0 76%;max-width:320px;scroll-snap-align:center;margin:0;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.12);border:1px solid var(--au2)}
+.review[hidden]{display:none}
+.review-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.review img{width:100%;height:auto;display:block}
+@media(min-width:768px){
+ .reviews-track{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;overflow:visible;padding:0}
+ .review{max-width:none;flex:none}
+}
+.lb{border:0;padding:0;background:transparent;max-width:min(92vw,460px);max-height:92vh;overflow:visible}
+.lb::backdrop{background:rgba(0,0,0,.8)}
+.lb img{display:block;max-width:100%;max-height:88vh;margin:auto;border-radius:16px}
+.lb-x{position:absolute;top:-14px;left:-6px;width:40px;height:40px;border-radius:50%;background:#fff;color:#1b2a20;font-size:1.6rem;line-height:1;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:2}

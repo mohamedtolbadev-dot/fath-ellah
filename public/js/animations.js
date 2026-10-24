@@ -25,6 +25,7 @@
   add('.usage-imgs .img-frame','rv-zoom',true);
   add('#ingredients img','rv-l');
   add('#ing li','rv-zoom',true);
+  add('.review','rv-zoom',true);
   add('.order-card > div:first-child .pick','rv-zoom',true);
   add('.order-card .rule',null);
   add('.order-card .space-y-5 > div',null,true);
@@ -34,7 +35,6 @@
   add('.how > li','rv-zoom',true);
   add('details',null,true);
   add('main > section:last-of-type > div > *',null,true);
-  add('footer .grid > *',null,true);
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
   }),{threshold:.12,rootMargin:'0px 0px -6% 0px'});

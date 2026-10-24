@@ -50,7 +50,7 @@
 <header class="bg-surface border-b border-gold sticky top-0 z-40">
  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
   <a href="#top" class="flex items-center gap-2"><img decoding="async" src="./images/logo.jpg" alt="" width="40" height="45" class="h-10 w-auto"><span class="latin text-white text-lg font-semibold">FATHIUM</span></a>
-  <nav class="hidden md:flex gap-8 text-sm text-mute" aria-label="التنقل"><a href="#details" class="hover:text-brand">المنتج</a><a href="#usage" class="hover:text-brand">الاستعمال</a><a href="#ingredients" class="hover:text-brand">المكونات</a><a href="#order" class="hover:text-brand">العروض</a><a href="#how" class="hover:text-brand">طريقة الطلب</a></nav>
+  <nav class="hidden md:flex gap-8 text-sm text-mute" aria-label="التنقل"><a href="#details" class="hover:text-brand">المنتج</a><a href="#usage" class="hover:text-brand">الاستعمال</a><a href="#ingredients" class="hover:text-brand">المكونات</a><a href="#reviews" class="hover:text-brand">آراء الزبناء</a><a href="#order" class="hover:text-brand">العروض</a><a href="#how" class="hover:text-brand">طريقة الطلب</a></nav>
   <a href="#order" class="btn !min-h-[44px] !px-5 text-sm">اطلب دابا</a>
  </div>
 </header>
@@ -137,6 +137,25 @@
  </div>
 </section>
 
+<!-- REVIEWS -->
+<section id="reviews" class="bg-deep">
+ <div class="max-w-6xl mx-auto px-5 py-14 md:py-20">
+  <div class="banner-wrap"><h2 class="banner"><svg class="lf" aria-hidden="true"><use href="#i-heart"/></svg>آراء الزبناء<svg class="lf" aria-hidden="true"><use href="#i-heart"/></svg></h2></div>
+  <p class="text-center text-mute mb-8 -mt-4">رسائل من زبناء تواصلو معانا فواتساب.</p>
+  <div class="reviews-track" role="list">
+   <figure class="review">
+    <button type="button" class="review-btn" aria-label="كبّر الصورة 1"><img decoding="async" src="./images/reviews/review-1.jpeg" alt="رأي زبون على واتساب رقم 1" width="720" height="1600" loading="lazy" onerror="this.closest('figure').hidden=true"></button>
+   </figure>
+   <figure class="review">
+    <button type="button" class="review-btn" aria-label="كبّر الصورة 2"><img decoding="async" src="./images/reviews/review-2.jpeg" alt="رأي زبون على واتساب رقم 2" width="720" height="1600" loading="lazy" onerror="this.closest('figure').hidden=true"></button>
+   </figure>
+   <figure class="review">
+    <button type="button" class="review-btn" aria-label="كبّر الصورة 3"><img decoding="async" src="./images/reviews/review-3.jpeg" alt="رأي زبون على واتساب رقم 3" width="720" height="1600" loading="lazy" onerror="this.closest('figure').hidden=true"></button>
+   </figure>
+  </div>
+ </div>
+</section>
+
 <!-- ORDER -->
 <section id="order" class="bg-deep border-t border-line py-14 md:py-20">
  <div class="max-w-3xl mx-auto px-5">
@@ -185,7 +204,7 @@
     </div>
     <div>
      <label for="city" class="sr-only">المدينة</label>
-     <div class="pill"><svg class="ico"><use href="#i-pin"/></svg><input id="city" name="city" list="cities" class="pill-in" placeholder="المدينة" autocomplete="off"><datalist id="cities"></datalist></div>
+     <div class="pill"><svg class="ico"><use href="#i-pin"/></svg><input id="city" name="city" class="pill-in" placeholder="المدينة" autocomplete="address-level2" enterkeyhint="done"></div>
      <p id="e-city" class="err" role="alert"></p>
     </div>
     <div>
@@ -246,24 +265,14 @@
 </section>
 </main>
 
-<footer class="bg-surface text-white/80 text-sm">
- <div class="max-w-6xl mx-auto px-5 py-14">
-  <div class="grid md:grid-cols-3 gap-10 mb-10">
-   <div><p class="latin text-white text-2xl font-bold mb-3">FATHIUM</p><p class="text-white/70 leading-relaxed">بروثين رشاقة، مكمل غذائي فعلبة 1 كيلو.</p></div>
-   <nav class="space-y-3" aria-label="روابط الموقع"><p class="text-white font-medium mb-4">روابط سريعة</p>
-    <a href="#details" class="block text-white/70 hover:text-white">عن المنتج</a><a href="#usage" class="block text-white/70 hover:text-white">طريقة الاستعمال</a><a href="#ingredients" class="block text-white/70 hover:text-white">المكونات</a><a href="#order" class="block text-white/70 hover:text-white">العروض</a></nav>
-   <div><p class="text-white font-medium mb-4">معلومات الطلب</p><ul class="text-white/70 leading-relaxed space-y-1"><li>علبة وحدة (1 كيلو): 299 درهم</li><li>جوج علب (2 كيلو): 499 درهم</li><li>الدفع عند الاستلام</li><li>التوصيل لجميع مدن المغرب</li></ul></div>
-  </div>
-  <div class="pt-8 border-t border-white/20 text-center text-white/50"><p>© 2026 FATHIUM. جميع الحقوق محفوظة.</p></div>
- </div>
-</footer>
-
 <div id="bar" class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-surface border-t border-gold px-4 pt-2 flex items-center gap-3" style="padding-bottom:max(.5rem,env(safe-area-inset-bottom))">
  <div class="leading-tight"><p id="b-offer" class="text-xs text-mute">اختار العرض</p><p id="b-price" class="num text-white text-lg">من 299 DH</p></div>
  <a href="#order" class="btn flex-1">اطلب دابا</a>
 </div>
 
 <a id="wa" class="wa" href="https://wa.me/" target="_blank" rel="noopener" aria-label="تواصل معانا فواتساب"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+
+<dialog id="lb" class="lb" aria-label="عرض الصورة"><button type="button" class="lb-x" aria-label="سد">×</button><img alt=""></dialog>
 
 <script src="./js/config.js"></script>
 <script src="./js/main.js"></script>
