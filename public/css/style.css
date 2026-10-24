@@ -460,16 +460,16 @@ html,body{max-width:100%;overflow-x:hidden}
 }
 
 /* ===== Scroll reveal + motion (only when motion is allowed: html.js) ===== */
-.js .rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s);will-change:opacity,transform}
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
 .js .rv.rv-zoom{transform:scale(.9)}
 .js .rv.rv-l{transform:translateX(-36px)}
 .js .rv.rv-r{transform:translateX(36px)}
 .js .rv.in{opacity:1;transform:none}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(9,63,48,.45)}70%{box-shadow:0 0 0 14px rgba(9,63,48,0)}100%{box-shadow:0 0 0 0 rgba(9,63,48,0)}}
 @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
 .js .hero-img{animation:floaty 5s ease-in-out 1.2s infinite}
-.js .hero-cta-btn{animation:pulse 2.2s ease-out 1.5s infinite}
+.hero-cta-btn{position:relative}
+.js .hero-cta-btn::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(9,63,48,.55);pointer-events:none;opacity:0;animation:ring 2.2s ease-out 1.5s infinite}
 .js .hero-checks .hc{animation:pop .5s cubic-bezier(.3,1.5,.5,1) backwards;animation-delay:calc(.6s + var(--k,0)*.12s)}
 .js .offer-banner{animation:rise .7s cubic-bezier(.2,.7,.2,1) backwards}
 .js .pick:hover{transform:translateY(-4px);transition:transform .25s}
@@ -498,8 +498,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .wa{position:fixed!important;right:16px!important;left:auto!important;bottom:calc(84px + env(safe-area-inset-bottom,0px))!important;z-index:50;width:58px!important;height:58px!important;border-radius:50%;background:#25D366!important;border:0!important;display:grid!important;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.28)}
 .wa svg{width:32px;height:32px}
 @media(min-width:768px){.wa{bottom:24px!important}}
-.js .wa{animation:waPulse 2.4s ease-out 2s infinite}
-@keyframes waPulse{0%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,0)}}
+.js .wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.6);pointer-events:none;opacity:0;animation:ring 2.4s ease-out 2s infinite}
 
 .lf,.lf.flip{transform:none!important;width:30px;height:30px}
 @media(max-width:767px){.lf,.lf.flip{width:24px!important;height:24px!important}}
@@ -509,8 +508,8 @@ html,body{max-width:100%;overflow-x:hidden}
 .hero-img{position:relative;z-index:3;--zoom:1.55;transform-origin:center center}
 @media(min-width:768px){.hero-img{--zoom:1.35}}
 @keyframes heroZoom{
- 0%,55%{transform:scale(var(--zoom));filter:drop-shadow(0 28px 36px rgba(0,0,0,.32))}
- 100%{transform:scale(1);filter:drop-shadow(0 14px 18px rgba(0,0,0,.18))}
+ 0%,55%{transform:scale(var(--zoom))}
+ 100%{transform:scale(1)}
 }
 @keyframes heroDim{0%,55%{opacity:.12}100%{opacity:1}}
 .js .hero-img{animation:heroZoom 2.8s cubic-bezier(.65,0,.25,1) .3s backwards,floaty 5s ease-in-out 3.3s infinite}
@@ -638,3 +637,9 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
 #ing li .num{color:#E6CD8A!important}
 #ing li:hover{background:var(--gd)!important;color:#fff!important}
 #ing li:hover .num{color:#E6CD8A!important}
+
+/* ===== Performance ===== */
+@keyframes ring{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.12,1.35);opacity:0}}
+.wa::after{will-change:transform,opacity}
+/* ما كنحتاجوش infinite animations فاش الصفحة مخبية/الحركة مقللة */
+@media(prefers-reduced-motion:reduce){.js .hero-cta-btn::after,.js .wa::after{animation:none}}
