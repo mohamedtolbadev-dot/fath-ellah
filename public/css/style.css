@@ -612,3 +612,16 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
 .lb::backdrop{background:rgba(0,0,0,.8)}
 .lb img{display:block;max-width:100%;max-height:88vh;margin:auto;border-radius:16px}
 .lb-x{position:absolute;top:-14px;left:-6px;width:40px;height:40px;border-radius:50%;background:#fff;color:#1b2a20;font-size:1.6rem;line-height:1;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:2}
+
+/* model.jpg: صورة عريضة تحت صور "علاش تختار" */
+.model-img{display:block;width:100%;max-width:460px;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center;margin-inline:auto}
+
+/* صور كاملة بلا قص ولا ارتفاع محدد */
+.details-img,#details .grid-cols-12 img,#ingredients img{height:auto!important;max-height:none!important;object-fit:contain!important}
+#details .grid-cols-12{align-items:start}
+
+/* وضع الهاتف: كل صورة فسطر بوحدها وبمقاسها الطبيعي */
+@media(max-width:767px){
+ #details .grid-cols-12{display:flex;flex-direction:column;gap:16px}
+ #details .grid-cols-12>img{width:100%;height:auto!important;max-height:none!important;object-fit:contain!important}
+}
