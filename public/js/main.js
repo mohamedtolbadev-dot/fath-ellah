@@ -7,6 +7,8 @@ function calc(){
   if(offer==='single'){const sub=SINGLE*qty;return{label:'علبة واحدة',q:`${qty} علبة · ${qty} كغ`,sub,save:0,fee:SINGLE_DELIVERY_FEE,total:SINGLE_DELIVERY_FEE==null?null:sub+SINGLE_DELIVERY_FEE};}
   const sub=BUNDLE*qty;return{label:'عرض جوج علب',q:`${qty} عرض · ${qty*JARS} علب · ${qty*JARS} كغ`,sub,save:(SINGLE*JARS-BUNDLE)*qty,fee:0,total:sub};
 }
+/* Meta Pixel: بارامترات المنتج/القيمة */
+function tp(){const c=calc()||{sub:SINGLE};return{content_name:'بروثين رشاقة FATHIUM',content_ids:[offer==='bundle'?'fathium-2kg':'fathium-1kg'],content_type:'product',value:c.sub,currency:META_CURRENCY,num_items:offer==='bundle'?qty*JARS:qty};}
 function bump(el){ if(!el||!el.animate) return; el.animate([{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'}); }
 function render(){
   document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=r.value===offer);
@@ -19,7 +21,7 @@ function render(){
   bump($('b-price'));bump($('s-total'));
 }
 document.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',()=>{
-  offer=r.value;$('e-offer').textContent='';render();
+  offer=r.value;$('e-offer').textContent='';render();track('AddToCart',tp());
 }));
 $('qm').onclick=()=>{if(qty>1){qty--;render();bump($('qty'));}};
 $('qp').onclick=()=>{if(qty<20){qty++;render();bump($('qty'));}};
@@ -82,6 +84,7 @@ $('f').addEventListener('submit',async e=>{
       if(!r.ok) throw new Error('HTTP '+r.status);
       const j=await r.json().catch(()=>null);
       if(!j||j.ok!==true) throw new Error('Server: '+JSON.stringify(j));
+      const lp=tp();trackUser(data);track(META_ORDER_EVENT,lp,j.id);
       showConfirm('ok','تم إرسال طلبك بنجاح',okMsg,c,data);
       $('f').reset();offer='bundle';qty=1;render();
     }else if(WHATSAPP){
@@ -98,11 +101,16 @@ $('f').addEventListener('submit',async e=>{
   sending=false;btn.disabled=false;btn.innerHTML=label;
 });
 new IntersectionObserver(([e])=>$('bar').style.display=e.isIntersecting?'none':'',{threshold:.05}).observe($('order'));
-document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{offer=b.dataset.pick;$('e-offer').textContent='';render();$('order').scrollIntoView({behavior:'smooth'});}));
+document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{offer=b.dataset.pick;$('e-offer').textContent='';render();track('AddToCart',tp());$('order').scrollIntoView({behavior:'smooth'});}));
 {const a=$('wa');
-  if(WHATSAPP){a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('السلام عليكم، بغيت نطلب بروثين رشاقة من FATHIUM');a.hidden=false;}
+  if(WHATSAPP){a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('السلام عليكم، بغيت نطلب بروثين رشاقة من FATHIUM');a.hidden=false;a.addEventListener('click',()=>track('Contact',{content_name:'whatsapp_float'}));}
   else a.hidden=true;}
 render();
+
+/* Meta Pixel: ViewContent، وصول لقسم الطلب، وبداية تعمير الفورم */
+track('ViewContent',tp());
+{let seen=false;new IntersectionObserver((es,io)=>{if(es[0].isIntersecting&&!seen){seen=true;track('ViewOrderForm',tp(),null,true);io.disconnect();}},{threshold:.25}).observe($('order'));}
+$('f').addEventListener('focusin',function once(){track('InitiateCheckout',tp());$('f').removeEventListener('focusin',once);});
 
 /* reviews lightbox */
 (function(){
