@@ -50,10 +50,12 @@ function validate(){
 /* modal ديال التأكيد */
 const cm=$('cm');
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function showConfirm(kind,title,msg,c,data){
+function showConfirm(kind,title,msg,c,data,dbg){
   $('cm-ic').className='cm-ic '+kind;
   $('cm-ic').innerHTML=kind==='err'?'<span aria-hidden="true">!</span>':'<svg class="ico"><use href="#i-check"/></svg>';
   $('cm-t').textContent=title;$('cm-msg').textContent=msg;
+  let d=$('cm-dbg');if(!d){d=document.createElement('p');d.id='cm-dbg';d.className='cm-dbg';$('cm-msg').after(d);}
+  d.textContent=dbg?'تفاصيل تقنية: '+dbg:'';
   const tot=c.total==null?fmt(c.sub)+' + التوصيل (كيتحدد قبل التأكيد)':fmt(c.total);
   $('cm-list').innerHTML=[['الاسم',data.name],['الهاتف',data.phone],['المدينة',data.city],['العنوان',data.address],['العرض',c.label],['الكمية',c.q],['المجموع',tot]]
     .map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
@@ -91,7 +93,7 @@ $('f').addEventListener('submit',async e=>{
     }
   }catch(err){
     console.error('Order not sent:',err);
-    showConfirm('err','وقع مشكل',failMsg,c,data);
+    showConfirm('err','وقع مشكل',failMsg,c,data,String(err&&err.message||err));
   }
   sending=false;btn.disabled=false;btn.innerHTML=label;
 });

@@ -651,8 +651,8 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
 .cm[open]::backdrop{animation:cmFade .3s ease}
 @keyframes cmIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
 @keyframes cmFade{from{opacity:0}to{opacity:1}}
-.cm-box{background:#fff;border-radius:28px;padding:32px 22px 22px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);border-top:4px solid var(--au);max-height:88vh;overflow:auto}
-.cm-ic{display:grid;place-items:center;width:68px;height:68px;margin:-64px auto 14px;border-radius:50%;background:var(--g);color:#fff;box-shadow:0 0 0 6px #fff,0 8px 20px rgba(9,63,48,.35)}
+.cm-box{background:#fff;border-radius:28px;padding:28px 22px 22px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);border-top:4px solid var(--au);max-height:88vh;overflow:auto}
+.cm-ic{display:grid;place-items:center;width:68px;height:68px;margin:0 auto 14px;border-radius:50%;background:var(--g);color:#fff;box-shadow:0 8px 20px rgba(9,63,48,.3)}
 .cm-ic .ico{width:34px;height:34px;color:#fff}
 .cm-ic.ok{animation:pop .5s cubic-bezier(.3,1.5,.5,1) .1s backwards}
 .cm-ic.err{background:#b3261e;font-size:2rem;font-weight:700}
@@ -665,3 +665,5 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
 .cm-list dd{font-weight:700;color:var(--ink2);text-align:end;overflow-wrap:anywhere}
 .cm-list>div:last-child dd{color:var(--g)}
 @media(prefers-reduced-motion:reduce){.cm[open],.cm[open]::backdrop,.cm-ic.ok{animation:none}}
+
+.cm-dbg{margin-top:10px;font-size:.72rem;color:#8a968e;direction:ltr;overflow-wrap:anywhere}
