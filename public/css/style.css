@@ -632,3 +632,9 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
  .reviews-track{scroll-padding-inline:16px;overscroll-behavior-x:contain}
  .review{flex:0 0 78%}
 }
+
+/* المكونات: لون الـ hover (أخضر + نص أبيض) كيبان مباشرة */
+#ing li{background:var(--g)!important;color:#fff!important;border-color:var(--g)!important}
+#ing li .num{color:#E6CD8A!important}
+#ing li:hover{background:var(--gd)!important;color:#fff!important}
+#ing li:hover .num{color:#E6CD8A!important}
