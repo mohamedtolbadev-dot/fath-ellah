@@ -16,7 +16,7 @@ function render(){
   $('qm').disabled=qty<=1; $('qp').disabled=qty>=20;
   const c=calc();
   const tl=$('s-total'); if(tl) tl.textContent=!c?'—':(c.total==null?fmt(c.sub)+' + التوصيل':fmt(c.total));
-  if(!c){$('b-offer').textContent='اختار العرض';$('b-price').textContent='من 299 DH';return;}
+  if(!c){$('b-offer').textContent='اختار العرض';$('b-price').textContent='من '+fmt(SINGLE);return;}
   $('b-offer').textContent=c.label;$('b-price').textContent=fmt(c.sub);
   bump($('b-price'));bump($('s-total'));
 }

@@ -667,3 +667,166 @@ main>section:last-of-type{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
 @media(prefers-reduced-motion:reduce){.cm[open],.cm[open]::backdrop,.cm-ic.ok{animation:none}}
 
 .cm-dbg{margin-top:10px;font-size:.72rem;color:#8a968e;direction:ltr;overflow-wrap:anywhere}
+
+/* =====================================================================
+   v3 UX/UI polish (خليه فآخر الملف، كيغلب على اللي قبل)
+   ===================================================================== */
+
+/* 0) رابط تخطي للكلافييه */
+.skip-link{position:absolute;top:-60px;inset-inline-start:12px;z-index:100;background:var(--g);color:#fff;padding:10px 18px;border-radius:12px;font-weight:700;transition:top .2s}
+.skip-link:focus{top:8px}
+
+/* 1) حركة أهدأ: بلا نبض، بلا طفو، بلا فلتر ثقيل، وintro قصير */
+.js .hero-cta-btn::after,.js .wa::after{animation:none;display:none}
+.hero-img{filter:none;max-height:380px}
+.js .hero-img{animation:heroIn .7s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes heroIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.js .hero-checks{animation:none}
+
+/* 2) بلا blur فخلفية المودال */
+.cm::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(0,0,0,.6)}
+
+/* 3) Watermark: ديكور فقط */
+main>section::before{opacity:.06}
+
+/* 4) Hero فالموبايل: المنتج كبير فالأول، والمميزات فعمودين تحتو */
+@media(max-width:767px){
+ .hero-grid{grid-template-columns:1fr 1fr;grid-template-areas:"img img" "a b";gap:16px 10px;margin-top:12px}
+ .hero-grid>.hero-img{grid-area:img;justify-self:center;width:auto;max-width:76%;max-height:300px}
+ .hero-grid>ul:first-child{grid-area:a}
+ .hero-grid>ul:last-child{grid-area:b}
+ .hero-checks{gap:12px}
+ .hero-checks li{font-size:.85rem;line-height:1.5;gap:8px}
+ .hc{width:24px;height:24px}
+ .hero-section .max-w-3xl{padding-top:12px}
+}
+@media(max-width:360px){
+ .hero-checks li{font-size:.78rem}
+ .hero-grid>.hero-img{max-height:250px}
+}
+
+/* 5) الحقول: حدود خفيفة + حالة "معمر" + حالة خطأ */
+.pill{border:1.5px solid var(--ln)!important;background:#fff!important}
+.pill:focus-within{border-color:var(--g)!important;box-shadow:0 0 0 3px rgba(9,63,48,.14)!important}
+.pill:has(.pill-in:not(:placeholder-shown)){border-color:var(--g)!important}
+.pill.invalid:not(#x){border-color:#d9534f!important;background:#fff5f4!important;box-shadow:0 0 0 3px rgba(217,83,79,.14)!important}
+.err{color:#b3261e!important;font-weight:600}
+
+/* 6) بطاقات العرض */
+.pick.single:has(input:checked){border-color:var(--g)!important}
+.pick.bundle:has(input:checked){outline-offset:5px!important}
+
+/* 7) تباين النصوص الذهبية على الأبيض */
+.pick-save{color:#7a5f1f!important}
+.pick.bundle .pick-save{color:var(--g)!important}
+#order h2 .em,.sec-title .em,h2 .em,h3 .em{color:#8a6d2b}
+
+/* 8) زر الإرسال */
+.btn-lg{min-height:64px;font-size:1.1rem}
+
+/* 9) FAQ */
+details{padding-inline:4px}
+summary{padding-block:6px}
+summary:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:8px}
+details[open]{background:#fafafa;border-radius:12px}
+
+/* 10) الشاشات الكبيرة */
+@media(min-width:1024px){
+ .hero-section .max-w-3xl{max-width:52rem}
+ .hero-img{max-height:440px}
+ #details p.text-center{font-size:1.1rem;line-height:2}
+}
+
+
+/* =====================================================================
+   v4 — Responsive كامل فوضع الهاتف (320px → 767px)
+   ===================================================================== */
+
+/* أساسيات لكل الأحجام */
+/* clip عوض hidden: يمنع السكرول الأفقي بلا ما يكسر sticky header (المتصفحات القديمة كتبقى على hidden) */
+html,body{overflow-x:clip}
+a,button,label.pick,summary{touch-action:manipulation}
+img,video,svg{max-width:100%}
+.err,.cm-box p,.cm-list dd{overflow-wrap:anywhere}
+.cm{max-height:92dvh}
+.cm-box{max-height:88dvh}
+
+@media(max-width:767px){
+ /* حاويات: هوامش أصغر باش المحتوى ياخد العرض */
+ #order .max-w-3xl,#details .max-w-3xl{padding-inline:14px}
+ #how,#reviews .max-w-6xl,#ingredients .max-w-6xl{padding-inline:16px}
+
+ /* نصوص طويلة: محاذاة للبداية (يمين) أسهل فالقراءة من التوسيط */
+ #details p.text-center{text-align:start;line-height:1.95}
+ .reasons li{font-size:1rem;gap:10px}
+ .reasons .ico{width:22px;height:22px;margin-top:5px}
+
+ /* Hero */
+ .sub-pill{line-height:1.6}
+ .band3 small{font-size:.74rem}
+ .band3>div>div{padding-inline:4px}
+ .band3 b,.band3 small{overflow-wrap:anywhere}
+
+ /* عناوين الأقسام */
+ .banner{max-width:100%}
+ #order h2{font-size:1.45rem}
+
+ /* بطاقة الطلب */
+ .order-card{padding:14px}
+ #order .grid.grid-cols-2{gap:10px}
+ .rule{margin:28px 0 20px;font-size:1.05rem}
+ .pill{min-height:54px}
+ .pill-in{min-width:0}
+ .err{overflow-wrap:anywhere}
+ .total-line{padding:12px 10px}
+ .btn-lg{line-height:1.5}
+
+ /* الشريط السفلي ديال الطلب */
+ #bar{gap:10px;padding-inline:12px}
+ #bar .btn{min-width:0;padding-inline:12px}
+ #b-offer{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+
+ /* زر واتساب: ينزل لتحت ملي الشريط كيتخبى (الفورم باين) */
+ body:has(#bar[style*="none"]) .wa{bottom:calc(16px + env(safe-area-inset-bottom,0px))!important}
+
+ /* مودال التأكيد */
+ .cm{width:94vw}
+ .cm-box{padding:22px 16px 18px;border-radius:22px}
+ .cm-list{padding:2px 12px}
+ .cm-list>div{flex-direction:column;gap:2px;padding:8px 0}
+ .cm-list dd{text-align:start}
+}
+
+/* هواتف صغيرة (≤ 400px) */
+@media(max-width:400px){
+ #order .grid.grid-cols-2{gap:8px}
+ .pick{padding:26px 6px 16px;min-height:190px;gap:4px}
+ .pick-title{font-size:.95rem}
+ .pick-note{font-size:.7rem;line-height:1.5}
+ .pick-save{font-size:.7rem;padding:3px 8px;line-height:1.5;text-align:center}
+ .pick-save .em,.pick-note .em{display:none}
+ .seal{font-size:.68rem;padding:2px 8px;right:6px}
+ .tick{top:8px;left:8px;width:24px;height:24px}
+ .btn-lg{font-size:.95rem;gap:8px}
+ .btn-lg .ico{width:22px;height:22px}
+ .trust-box li{font-size:.9rem}
+}
+
+/* هواتف صغيرة بزاف (≤ 340px) */
+@media(max-width:340px){
+ .pill{padding:0 10px;gap:6px}
+ .pill .ico{width:20px;height:20px}
+ #ql{font-size:.85rem}
+ .output,#qty{width:32px}
+ .offer-banner{font-size:1.05rem}
+ .banner{font-size:1rem!important}
+ .pick-price{font-size:1.6rem}
+ #bar .btn{font-size:.9rem}
+}
+
+/* لاندسكيب فالموبايل: الشريط السفلي أنحف */
+@media(max-height:480px) and (orientation:landscape){
+ #bar{padding-top:4px}
+ #bar .btn{min-height:40px}
+ .hero-grid>.hero-img{max-height:200px}
+}
