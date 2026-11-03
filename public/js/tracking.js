@@ -67,7 +67,6 @@
         fbq('init',META_ID,{
           ph:digits,
           fn:p[0]||'', ln:p.slice(1).join(' '),
-          ct:String(d.city||'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,''),
           country:'ma'
         });
       }catch(e){}

@@ -1,4 +1,6 @@
 /* FATHIUM - order logic: offers, quantity, total, validation */
+/* حماية: إلا تبلوكا tracking.js (adblock) ما يتوقفش الطلب */
+window.track=window.track||function(){};window.trackUser=window.trackUser||function(){};
 const $=id=>document.getElementById(id), fmt=n=>n.toLocaleString('en')+' DH';
 let offer='bundle', qty=1;
 $('ing').innerHTML=ING.map((n,i)=>`<li style="--i:${i}"><span class="num">${String(i+1).padStart(2,'0')}</span><span>${n}</span></li>`).join('');
