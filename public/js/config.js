@@ -1,7 +1,7 @@
 /* FATHIUM - settings: prices, WhatsApp number, ingredients */
 const SINGLE=239, BUNDLE=399, JARS=2;
 const SINGLE_DELIVERY_FEE=null; // رقم (مثلاً 30) عند تحديد ثمن التوصيل؛ null = يُحدد قبل التأكيد
-const WHATSAPP='212643299680';              // رقم واتساب بالصيغة الدولية بلا + (مثال: 2126XXXXXXXX)؛ فارغ = الزر مخفي
+const WHATSAPP='212698818972';              // رقم واتساب بالصيغة الدولية بلا + (مثال: 2126XXXXXXXX)؛ فارغ = الزر مخفي
 const ORDER_ENDPOINT='https://script.google.com/macros/s/AKfycbwfskycGFFZyOwHEg5ApbxrXC0SGVlvnnr7GxyD8K-9GR6nDpwUp0EhKPV_W-g2A9ekdA/exec';      // رابط Web App ديال Google Apps Script (كيسالي بـ /exec). شوف google-sheet/Code.gs
 /* Meta Pixel: حط الـ Pixel ID (أرقام فقط، 15-16 رقم) من Meta Events Manager؛ فارغ = التتبع مطفي */
 const META_PIXEL_ID='1457671739762412';
