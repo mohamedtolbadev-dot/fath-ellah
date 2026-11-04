@@ -69,6 +69,19 @@ function showConfirm(kind,title,msg,c,data,dbg){
 $('cm-ok').addEventListener('click',()=>cm.close?cm.close():cm.removeAttribute('open'));
 cm.addEventListener('click',e=>{if(e.target===cm)cm.close();});
 
+/* إرسال الطلب: timeout 20ث + retry واحد، و cid كيمنع التكرار فـ Google Sheet */
+async function sendOrder(payload){
+  const ac=new AbortController(),t=setTimeout(()=>ac.abort(),20000);
+  try{
+    /* text/plain باش Google Apps Script ما يطلبش preflight (CORS) */
+    const r=await fetch(ORDER_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:ac.signal});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const j=await r.json().catch(()=>null);
+    if(!j||j.ok!==true) throw new Error('Server: '+JSON.stringify(j));
+    return j;
+  }finally{clearTimeout(t);}
+}
+
 let sending=false;
 $('f').addEventListener('submit',async e=>{
   e.preventDefault();
@@ -81,11 +94,15 @@ $('f').addEventListener('submit',async e=>{
   sending=true;btn.disabled=true;btn.textContent='جاري الإرسال...';
   try{
     if(ORDER_ENDPOINT){
-      /* text/plain باش Google Apps Script ما يطلبش preflight (CORS) */
-      const r=await fetch(ORDER_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...data,offer,qty})});
-      if(!r.ok) throw new Error('HTTP '+r.status);
-      const j=await r.json().catch(()=>null);
-      if(!j||j.ok!==true) throw new Error('Server: '+JSON.stringify(j));
+      const cid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);
+      const payload={...data,offer,qty,cid};
+      let j;
+      try{j=await sendOrder(payload);}
+      catch(e1){
+        if(String(e1&&e1.message).includes('"error":"invalid"')) throw e1;
+        await new Promise(r=>setTimeout(r,1500));
+        j=await sendOrder(payload);   /* retry واحد، نفس cid */
+      }
       const lp=tp();trackUser(data);track(META_ORDER_EVENT,lp,j.id);
       showConfirm('ok','تم إرسال طلبك بنجاح',okMsg,c,data);
       $('f').reset();offer='bundle';qty=1;render();
