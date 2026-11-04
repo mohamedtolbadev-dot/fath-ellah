@@ -174,25 +174,28 @@
   </div>
 
   <form id="f" novalidate class="order-card">
-   <div class="grid grid-cols-2 gap-5 md:gap-8" role="radiogroup" aria-label="اختار العرض">
-    <label class="pick bundle form-offer" data-recommended="true">
-     <input type="radio" name="offerF" value="bundle" checked>
-     <span class="seal"><svg class="em" aria-hidden="true"><use href="#i-star"/></svg>أحسن عرض</span>
-     <span class="tick"><svg class="ico"><use href="#i-check"/></svg></span>
-     <b class="pick-title">2 علب <span class="latin" dir="ltr">2KG</span></b>
-     <s class="pick-was num" dir="ltr">478 DH</s>
-     <span class="pick-price num">399 <small>DH</small></span>
-     <span class="pick-note"><svg class="em" aria-hidden="true"><use href="#i-truck"/></svg>والتوصيل مجاني</span>
-     <span class="pick-save"><svg class="em" aria-hidden="true"><use href="#i-tag"/></svg>كتوفر 79 درهم</span>
-    </label>
-    <label class="pick single form-offer">
-     <input type="radio" name="offerF" value="single">
-     <span class="tick"><svg class="ico"><use href="#i-check"/></svg></span>
-     <svg class="pick-leaf" aria-hidden="true"><use href="#i-grain"/></svg>
-     <b class="pick-title">1 علبة <span class="latin" dir="ltr">1KG</span></b>
-     <span class="pick-price num">239 <small>DH</small></span>
-     <span class="pick-note">ثمن التوصيل كيتحدد قبل التأكيد</span>
-    </label>
+   <div class="offer-choice">
+    <p id="offer-choice-hint" class="offer-choice-hint">اختار العرض اللي مناسب ليك <svg aria-hidden="true"><use href="#i-arrow"/></svg></p>
+    <div class="grid grid-cols-2 gap-5 md:gap-8" role="radiogroup" aria-label="اختار العرض" aria-describedby="offer-choice-hint">
+     <label class="pick bundle form-offer" data-recommended="true">
+      <input type="radio" name="offerF" value="bundle" checked>
+      <span class="seal"><svg class="em" aria-hidden="true"><use href="#i-star"/></svg>أحسن عرض</span>
+      <span class="tick"><svg class="ico"><use href="#i-check"/></svg></span>
+      <b class="pick-title">2 علب <span class="latin" dir="ltr">2KG</span></b>
+      <s class="pick-was num" dir="ltr">478 DH</s>
+      <span class="pick-price num">399 <small>DH</small></span>
+      <span class="pick-note"><svg class="em" aria-hidden="true"><use href="#i-truck"/></svg>والتوصيل مجاني</span>
+      <span class="pick-save"><svg class="em" aria-hidden="true"><use href="#i-tag"/></svg>كتوفر 79 درهم</span>
+     </label>
+     <label class="pick single form-offer">
+      <input type="radio" name="offerF" value="single">
+      <span class="tick"><svg class="ico"><use href="#i-check"/></svg></span>
+      <svg class="pick-leaf" aria-hidden="true"><use href="#i-grain"/></svg>
+      <b class="pick-title">1 علبة <span class="latin" dir="ltr">1KG</span></b>
+      <span class="pick-price num">239 <small>DH</small></span>
+      <span class="pick-note">ثمن التوصيل كيتحدد قبل التأكيد</span>
+     </label>
+    </div>
    </div>
    <p id="e-offer" class="err text-center mt-4" role="alert"></p>
 
