@@ -175,7 +175,8 @@
 
   <form id="f" novalidate class="order-card">
    <div class="offer-choice">
-    <div class="grid grid-cols-2 gap-5 md:gap-8" role="radiogroup" aria-label="اختار العرض">
+    <p id="offer-choice-hint" class="offer-choice-hint">اختار العرض اللي مناسب ليك <svg aria-hidden="true"><use href="#i-arrow"/></svg></p>
+    <div class="grid grid-cols-2 gap-5 md:gap-8" role="radiogroup" aria-label="اختار العرض" aria-describedby="offer-choice-hint">
      <label class="pick bundle form-offer" data-recommended="true">
       <input type="radio" name="offerF" value="bundle" checked>
       <span class="seal"><svg class="em" aria-hidden="true"><use href="#i-star"/></svg>أحسن عرض</span>
