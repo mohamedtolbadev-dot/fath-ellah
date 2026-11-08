@@ -2,7 +2,7 @@
 const SINGLE=239, BUNDLE=399, JARS=2;
 const SINGLE_DELIVERY_FEE=null; // رقم (مثلاً 30) عند تحديد ثمن التوصيل؛ null = يُحدد قبل التأكيد
 const WHATSAPP='212698818972';              // رقم واتساب بالصيغة الدولية بلا + (مثال: 2126XXXXXXXX)؛ فارغ = الزر مخفي
-const ORDER_ENDPOINT='https://script.google.com/macros/s/AKfycbw2r-SZ--hf5J9uAEi904s01Wt4qXIGqZhV9OhYe8oUuvQz9ZdEDCaDPOR83eOCVQ_QXg/exec';      // رابط Web App ديال Google Apps Script (كيسالي بـ /exec). شوف google-sheet/Code.gs
+const ORDER_ENDPOINT='https://script.google.com/macros/s/AKfycbwYZOYDD2SeP5XTqP7bOI3-swSaLqbtT9Lp7tgiZxniA8xrKtw_CzCsurJi0h6hlj297g/exec';      // رابط Web App ديال Google Apps Script (كيسالي بـ /exec). شوف google-sheet/Code.gs
 /* Meta Pixel: حط الـ Pixel ID (أرقام فقط، 15-16 رقم) من Meta Events Manager؛ فارغ = التتبع مطفي */
 const META_PIXEL_ID='1457671739762412';
 const META_CURRENCY='MAD';
